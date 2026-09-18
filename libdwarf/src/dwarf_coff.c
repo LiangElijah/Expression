@@ -169,7 +169,7 @@ int dwarf_coff_init(const char *path,
     }
 
 FREE:
-    dwarf_coff_deinit(&dw_accessData);
+    dwarf_coff_release(dw_accessData);
 
 CLOSE:
     fclose(fp);
@@ -177,14 +177,28 @@ CLOSE:
     return DW_DLV_ERROR;
 }
 
-void dwarf_coff_deinit(Dwarf_Obj_Access_Data **dw_accessData_p)
+void dwarf_coff_deinit(Dwarf_Debug dw_dbg, 
+    Dwarf_Obj_Access_Data *dw_accessData)
 {
-    if(dw_accessData_p == NULL) return;
-    Dwarf_Obj_Access_Data *dw_accessData = *dw_accessData_p;
-    *dw_accessData_p = NULL;
+    dwarf_finish(dw_dbg);
+
     if(dw_accessData == NULL) return;
 
-    for(int i = 1; i <= dw_accessData->section_num; i++)
+    for(int i = 0; i <= dw_accessData->section_num; i++)
+    {
+        free(dw_accessData->section[i].name);
+        free(dw_accessData->section[i].data);
+    }
+
+    free(dw_accessData->section);
+    free(dw_accessData);
+}
+
+void dwarf_coff_release(Dwarf_Obj_Access_Data *dw_accessData)
+{
+    if(dw_accessData == NULL) return;
+
+    for(int i = 0; i <= dw_accessData->section_num; i++)
     {
         free(dw_accessData->section[i].name);
         free(dw_accessData->section[i].data);

@@ -8,8 +8,6 @@
 !*.ui
 
 !/libdwarf/
-!/libdwarf/.qtcreator/
-!/libdwarf/.qtcreator/*
 !/libdwarf/include/
 !/libdwarf/include/*.h
 !/libdwarf/lib/

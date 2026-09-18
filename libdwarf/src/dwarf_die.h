@@ -53,6 +53,7 @@ typedef struct st_dieNode {
 int dwarf_die_init(Dwarf_Debug dw_dbg, 
     st_dieNode_t **entry, 
     Dwarf_Error *error);
+int dwarf_die_deinit(st_dieNode_t *entry);
 int dwarf_print_die(Dwarf_Debug dw_dbg, 
     st_dieNode_t *entry, 
     Dwarf_Error *error);

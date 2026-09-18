@@ -80,6 +80,8 @@ int dwarf_coff_init(const char *path,
     Dwarf_Obj_Access_Data **dw_accessData_p, 
     Dwarf_Debug *ret_dbg, 
     Dwarf_Error *error);
-void dwarf_coff_deinit(Dwarf_Obj_Access_Data **dw_accessData_p);
+void dwarf_coff_deinit(Dwarf_Debug dw_dbg, 
+    Dwarf_Obj_Access_Data *dw_accessData);
+void dwarf_coff_release(Dwarf_Obj_Access_Data *dw_accessData);
 
 #endif /* __DWARF_COFF_H__ */

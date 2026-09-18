@@ -805,6 +805,14 @@ RET:
     return res;
 }
 
+int dwarf_die_deinit(st_dieNode_t *entry) 
+{
+    if(entry != NULL)
+    {
+        
+    }
+}
+
 int dwarf_print_type(Dwarf_Debug dw_dbg, 
     st_dieNode_t *entry, 
     Dwarf_Error *error,

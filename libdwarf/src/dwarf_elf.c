@@ -10,3 +10,8 @@ int dwarf_elf_init(const char *path,
         NULL, NULL, 
         ret_dbg, error);
 }
+
+void dwarf_elf_deinit(Dwarf_Debug dw_dbg)
+{
+    dwarf_finish(dw_dbg); 
+}
