@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Widget</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>5</number>
+   </property>
+   <property name="leftMargin">
+    <number>10</number>
+   </property>
+   <property name="topMargin">
+    <number>10</number>
+   </property>
+   <property name="rightMargin">
+    <number>10</number>
+   </property>
+   <property name="bottomMargin">
+    <number>10</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
+     <property name="spacing">
+      <number>5</number>
+     </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QComboBox" name="comboBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>打开文件</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTreeWidget" name="treeWidget">
+     <property name="styleSheet">
+      <string notr="true">
+QTreeWidget {
+    border: 1px solid #d0d0d0;          /* 控件整体外边框 */
+    outline: none;                      /* 避免选中时文本含边框 */
+}
+ 
+QHeaderView::section {
+    border: 1px solid #d0d0d0;          /* 控件整体外边框 */
+    border-left: none;                  /* 避免表头之间线条重叠变粗 */
+    border-top: none;                   /* 避免表头之间线条重叠变粗 */
+    background-color: #f5f5f5;
+    padding: 4px;
+}
+ 
+QTreeView::item {
+    border-right: 1px solid #d0d0d0;    /* 垂直网格线 */
+    border-bottom: 1px solid #d0d0d0;   /* 水平网格线 */
+    background-clip: content;           /* 防止选中背景盖住边框 */
+    padding: 2px;
+}
+ 
+QTreeView::item:selected {
+    background-color: #cfe6fd;
+    color: black;
+}
+ 
+QTreeView::branch {
+    border-bottom: 1px solid #d0d0d0;   /* 展开图标区域也补上水平线 */
+}
+</string>
+     </property>
+     <property name="uniformRowHeights">
+      <bool>true</bool>
+     </property>
+     <column>
+      <property name="text">
+       <string>Expression</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Address</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Type</string>
+      </property>
+     </column>
+     <item>
+      <property name="text">
+       <string>测试</string>
+      </property>
+      <property name="text">
+       <string>0x1234</string>
+      </property>
+      <property name="text">
+       <string>int</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
