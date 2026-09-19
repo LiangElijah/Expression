@@ -726,7 +726,11 @@ int dwarf_die_init(Dwarf_Debug dw_dbg,
                         list_add(&type_node->row, &var_node->row);
 
                         // 5、递归type
-                        dwarf_get_type_info(dw_dbg, type_die, type_node, error);
+                        res = dwarf_get_type_info(dw_dbg, type_die, type_node, error);
+                        if(res == DW_DLV_ERROR) {
+                            printf("[%s-%s:%d] dwarf_get_type_info() %s.\n", __FILE__, __func__, __LINE__, dwarf_errmsg(*error));
+                            goto TYPE;
+                        }
                     }
                     else // 4、遍历type链表
                     {
@@ -781,7 +785,11 @@ int dwarf_die_init(Dwarf_Debug dw_dbg,
                             list_add_tail(&type_node->column, &type_entry->column);
 
                             // 5、递归type
-                            dwarf_get_type_info(dw_dbg, type_die, type_node, error);
+                            res = dwarf_get_type_info(dw_dbg, type_die, type_node, error);
+                            if(res == DW_DLV_ERROR) {
+                                printf("[%s-%s:%d] dwarf_get_type_info() %s.\n", __FILE__, __func__, __LINE__, dwarf_errmsg(*error));
+                                goto TYPE;
+                            }
                         }
                     }
 

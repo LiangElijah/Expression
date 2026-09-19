@@ -80,8 +80,7 @@ int dwarf_coff_init(const char *path,
     dw_accessData->pointer_size = 4;
     dw_accessData->file_size = file_size;
     dw_accessData->section_num = 0;
-    dw_accessData->section = malloc((filehdr.u16NumSec + 1)*sizeof(Dwarf_Obj));
-    //memset(dw_accessData->section, 0, sizeof(Dwarf_Obj)); // 索引0预留为空
+    dw_accessData->section = malloc(filehdr.u16NumSec*sizeof(Dwarf_Obj));
     for(int i = 1; i <= filehdr.u16NumSec; i++) {
         st_sechdr_t sechdr = {0};
         char section_name[128] = {0};
@@ -180,11 +179,11 @@ CLOSE:
 void dwarf_coff_deinit(Dwarf_Debug dw_dbg, 
     Dwarf_Obj_Access_Data *dw_accessData)
 {
-    dwarf_finish(dw_dbg);
+    dwarf_object_finish(dw_dbg);
 
     if(dw_accessData == NULL) return;
 
-    for(int i = 0; i <= dw_accessData->section_num; i++)
+    for(int i = 0; i < dw_accessData->section_num; i++)
     {
         free(dw_accessData->section[i].name);
         free(dw_accessData->section[i].data);

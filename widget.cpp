@@ -6,22 +6,21 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
-
-    ui->treeWidget->setColumnWidth(0, 400);
-    ui->treeWidget->setColumnWidth(1, 180);
-    ui->treeWidget->setColumnWidth(2, 120);
-    ui->treeWidget->clear();
-    ui->treeWidget->header()->setSectionsMovable(true);
-    ui->treeWidget->header()->setFirstSectionMovable(true);
+    setbuf(stdout, NULL);
 
     columnOfExpression = getColumnOfTitle("Expression");
     columnOfAddress = getColumnOfTitle("Address");
     columnOfType = getColumnOfTitle("Type");
 
+    ui->treeWidget->setColumnWidth(columnOfExpression, 380);
+    ui->treeWidget->setColumnWidth(columnOfAddress, 250);
+    ui->treeWidget->setColumnWidth(columnOfType, 100);
+    ui->treeWidget->clear();
+    ui->treeWidget->header()->setSectionsMovable(true);
+    ui->treeWidget->header()->setFirstSectionMovable(true);
+
     ui->comboBox->addItem("");
-
     readJsonFile(CONFIG_FILE);
-
     auto *treeWidgetItem = new QTreeWidgetItem(ui->treeWidget);
     treeWidgetItem->setFlags(treeWidgetItem->flags() | Qt::ItemIsEditable);
 }
